@@ -1,0 +1,33 @@
+--O SQLite não tem o Select Top, porém podemos usar o Limit, conforme abaixo
+--acabamos adaptando os comandos
+
+-- Limit or Top, Distint, Count, As, Max, Min, Avg
+
+--Consulta das primeiras cinco linhas
+Select *
+From EmployeeDemographics limit 5
+
+--Trazendo os valores únicos de Genêros, nesse caso apenas 2
+Select Distinct(Gender)
+From EmployeeDemographics
+
+--Fazendo a contagem
+Select Count(LastName)
+From EmployeeDemographics
+
+-- Renomeando a coluna que traz o resultado da consulta realizada
+Select Count(LastName) AS LastNameCount
+From EmployeeDemographics
+
+-- Trazendo o valor máximo de salário da tabela
+Select Max(Salary)
+From EmployeeSalary
+
+-- Trazendo o valor mínimo de salário da tabela
+Select Min(Salary)
+From EmployeeSalary
+
+-- Trazendo o valor médio de salário com base nos dados da tabela
+
+Select Avg(Salary) AS AvgSalary
+From EmployeeSalary
