@@ -1,0 +1,48 @@
+-- =, <,>, And, Or, Like, In
+
+-- Consulta que busca o valor que seja igual o que for definido 
+Select *
+From EmployeeDemographics
+where FirstName = 'Jim'
+
+-- Consulta que busca qualquer valor diferente do selecionado
+Select *
+From EmployeeDemographics
+where FirstName <> 'Jim'
+
+-- Consulta busca a Idade maior que 30 anos
+Select * 
+From EmployeeDemographics
+Where Age > 30
+
+-- Consulta busca a Idade maior ou igual a 30 anos
+Select * 
+From EmployeeDemographics
+Where Age >= 30
+
+-- Consulta busca a Idade menor que 30 anos
+Select * 
+From EmployeeDemographics
+Where Age < 30
+
+-- Consulta busca com dois critérios
+Select * 
+From EmployeeDemographics
+Where Age >= 30 and Gender = 'Male'
+
+-- Consulta busca com dois critérios, porém apenas um precisa ser verdadeiro
+Select * 
+From EmployeeDemographics
+Where Age >= 30 or Gender = 'Male'
+
+--Essa consulta consegue pesquisar o valor que vc deseja em qualquer posição, ou seja, 
+--não apenas os nomes que começam ou terminam com S, mas também os nomes que tem S em sua composição 
+--independente de sua posição
+Select *
+From EmployeeDemographics
+Where LastName Like 'S%o%'
+
+--Consulta que pode ser usada com múltiplos valores, ao invés de usar AND
+Select *
+From EmployeeDemographics
+where FirstName IN('Jim', 'Michael')
