@@ -1,0 +1,29 @@
+--Inner Joins, Full/Left/Right Outer Joins
+
+-- O Inner Join trás apenas valores que sejam idênticos, ou seja,
+-- que existe corresponência entre as colunas que foram comparadas, caso não haja
+-- a linha é desconsiderada
+Select *
+From EmployeeDemographics
+Inner Join EmployeeSalary
+ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+ 
+-- No caso do Full Join ele trás todos os valores, mesmo que não haja corresponência
+Select *
+From EmployeeDemographics
+Full Join EmployeeSalary
+ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+ 
+-- Com o Left Join a consulta incluido todas as linhas da tabela da esquerda mesmo que não
+-- haja correspondência na tabela da direita
+Select *
+From EmployeeDemographics
+Left Join EmployeeSalary
+ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+-- Com o Right Join a consulta incluido todas as linhas da tabela da direita mesmo que não
+-- haja correspondência na tabela da esquerda
+Select *
+From EmployeeDemographics
+Right Join EmployeeSalary
+ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
