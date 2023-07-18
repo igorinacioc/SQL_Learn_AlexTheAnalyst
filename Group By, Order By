@@ -1,0 +1,31 @@
+-- Group By, Order By
+
+-- Agroupar uma consulta com o valor definido
+Select Gender, Count(Gender) As CountGender
+From EmployeeDemographics
+Group By Gender
+
+--incluindo mais condições
+Select Gender, Count(Gender) As CountGender
+From EmployeeDemographics
+Where Age > 31
+Group By Gender
+
+--Order By ordena os valores de forma ascedente e descendente
+Select Gender, Count(Gender) As CountGender
+From EmployeeDemographics
+Where Age > 31
+Group By Gender
+Order By CountGender DESC
+
+--Order By com múltiplas colunas.
+--Podemos observar na consulta abaixo que os dois empregados com idade de 30 anos
+--na coluna Gender vem primeiro Female e em seguida Male
+Select *
+From EmployeeDemographics
+Order By Age ASC, Gender ASC
+
+--Order By pode usar selecionando o número da coluna ao invés do nome
+Select *
+From EmployeeDemographics
+Order By 4 ASC, 5 ASC
