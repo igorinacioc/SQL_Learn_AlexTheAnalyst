@@ -1,0 +1,35 @@
+-- Having Clause
+
+/*A cláusula WHERE é usada para filtrar linhas de um conjunto de resultados, 
+enquanto a cláusula HAVING é usada para filtrar linhas de um conjunto de 
+resultados agrupado. A cláusula WHERE é sempre executada primeiro, e a 
+cláusula HAVING é executada depois.*/
+
+/*
+A cláusula WHERE pode ser usada para filtrar linhas com base em qualquer
+critério, como um valor de coluna, uma data ou uma hora. A cláusula HAVING 
+pode ser usada para filtrar linhas com base nos resultados de uma função 
+agregada, como a soma, a média ou a contagem.*/
+
+Select JobTitle, Count(JobTitle) As CountJob
+From EmployeeDemographics
+JOIN EmployeeSalary
+ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+Group By JobTitle
+WHERE CountJob > 1;
+
+Select JobTitle, Count(JobTitle) As CountJob
+From EmployeeDemographics
+JOIN EmployeeSalary
+ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+Group By JobTitle
+Having CountJob > 1;
+
+Select JobTitle, Avg(Salary) As AvgSalary
+From EmployeeDemographics
+JOIN EmployeeSalary
+ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+Group By JobTitle
+Having AvgSalary > 45000
+Order By AvgSalary;
+
