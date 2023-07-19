@@ -1,0 +1,13 @@
+-- Aliasing
+
+-- No código do Alex ele usou o +, porém no SQLite não funciona
+-- precisa ser usado ||
+Select  FirstName || ' '|| LastName AS FullName
+From EmployeeDemographics
+
+-- Quando alterar o nome das colunas e importante usar seu nome junto com a 
+-- coluna que deseja para facilitar a leitura e visualização do código
+Select Demo.EmployeeID, Sal.Salary
+From EmployeeDemographics AS Demo
+JOIN EmployeeSalary AS Sal    
+ ON Demo.EmployeeID = Sal.EmployeeID
