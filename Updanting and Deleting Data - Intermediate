@@ -1,0 +1,15 @@
+-- Updanting and Deleting Data
+
+Select *
+From EmployeeDemographics
+
+--Atualização de uma tabela
+Update EmployeeDemographics
+Set Age = 31, Gender = 'Female'
+Where FirstName = 'Holly' and LastName = 'Flax'
+
+--Exclusão de uma linha
+Delete From EmployeeDemographics
+Where  EmployeeID = 1005 
+
+
