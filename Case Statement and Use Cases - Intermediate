@@ -1,0 +1,64 @@
+--Case Statement
+-- CASE é uma instrução que permite testar uma condição e retornar um valor 
+--se a condição for verdadeira ou outro valor se a condição for falsa
+Select FirstName, LastName, Age,
+Case
+   When Age > 30 then 
+    'Old'
+   When Age Between 27 and 30 then
+   'Young'
+   Else
+    'Baby'
+End ClassificationAge
+From EmployeeDemographics
+Where Age Is Not Null
+Order By Age
+
+--No caso abaixo vemos que dependemos da ordem que é colado os critérios em Case,
+-- pode ser ignorado, pois o primeiro critério que for correspondido será o 
+--resultado, e os outros critérios serão ignorados
+
+-- Exemplo Segundo Critério sendo ignorado pelo primeiro: 
+-- O Stanley foi classificado como Old ao invés de Ignored
+Select FirstName, LastName, Age,
+Case
+   When Age > 30 then 
+    'Old'
+   When Age = 38 then
+   'Ignored'
+   Else
+    'Baby'
+End ClassificationAge
+From EmployeeDemographics
+Where Age Is Not Null
+Order By Age
+
+-- Para resolver isso alteramos a ordem do código:
+Select FirstName, LastName, Age,
+Case
+   When Age = 38 then
+   'Ignored'
+   When Age > 30 then 
+    'Old'
+   Else
+    'Baby'
+End ClassificationAge
+From EmployeeDemographics
+Where Age Is Not Null
+Order By Age
+
+-- Exemplo do Alex interessante de uso, fazendo inclusive contas
+Select FirstName, LastName, JobTitle, Salary,
+Case
+ When JobTitle = 'Salesman' THEN
+ Salary + (Salary * .10)
+ When JobTitle = 'Accountant' THEN
+ Salary + (Salary * .05)
+ When JobTitle = 'HR' THEN 
+ Salary + (Salary * .000001)
+ Else Salary +(Salary * .03)
+END AS SalaryAfterRise
+From EmployeeDemographics
+Join EmployeeSalary
+ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+Order By SalaryAfterRise Asc
